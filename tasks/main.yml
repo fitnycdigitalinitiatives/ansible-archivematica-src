@@ -214,7 +214,6 @@
     tags:
       - "amsrc-pipeline"
       - "amsrc-pipeline-websrv"
-
   when: "archivematica_src_configure_dashboard|bool"
 
 
@@ -240,6 +239,14 @@
     LC_ALL: "en_US.utf8"
   when: "archivematica_src_install_sample_data|bool"
   become: "no"
+
+#
+# docker services configuration
+#
+- include: "docker.yml"
+  tags:
+    - "amsrc-docker"
+  when: ansible_virtualization_type == "docker"
 
 #
 # archivematica-devtools
@@ -295,7 +302,13 @@
 
 - include: "configure-gpg.yml"
   tags:
+<<<<<<< HEAD
     - "amsrc-configure"
   when:
     - "archivematica_src_install_ss|bool or archivematica_src_install_ss=='rpm'"
     - "archivematica_src_configure_gpg is defined"
+=======
+    - "amsrc-appraisaltab"
+  when: "archivematica_src_install_appraisaltab|bool"
+
+>>>>>>> Add support for docker
