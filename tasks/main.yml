@@ -302,13 +302,7 @@
 
 - include: "configure-gpg.yml"
   tags:
-<<<<<<< HEAD
     - "amsrc-configure"
   when:
     - "archivematica_src_install_ss|bool or archivematica_src_install_ss=='rpm'"
     - "archivematica_src_configure_gpg is defined"
-=======
-    - "amsrc-appraisaltab"
-  when: "archivematica_src_install_appraisaltab|bool"
-
->>>>>>> Add support for docker
